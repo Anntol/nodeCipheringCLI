@@ -1,0 +1,8 @@
+{
+  "name": "nodecipheringcli",
+  "version": "1.0.0",
+  "description": "https://github.com/rolling-scopes-school/basic-nodejs-course/blob/master/descriptions/ciphering-cli-tool.md",
+  "main": "index.js",
+  "author": "Anna Tolstova",
+  "license": "ISC"
+}

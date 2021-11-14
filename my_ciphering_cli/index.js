@@ -16,14 +16,14 @@ for (let i = 2; i < process.argv.length; i += 2) {
     options.set(key, process.argv[i + 1]);
 }
 
-const input = options.get('-i');
-const output = options.get('-o');
+const input = options.get('-i') ?? options.get('--input');
+const output = options.get('-o') ?? options.get('--output');
 if ((!isFileAccessible(input)) || (!isFileAccessible(output))) {
     process.exit(1);
 }
 
 let streams = [];
-const ciphers = options.get('-c');
+const ciphers = options.get('-c') ?? options.get('--config');
 ciphers.split('-').forEach(cipher => {
     switch (cipher[0]) {
         case 'C':

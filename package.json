@@ -2,7 +2,8 @@
   "name": "nodecipheringcli",
   "version": "1.0.0",
   "description": "https://github.com/rolling-scopes-school/basic-nodejs-course/blob/master/descriptions/ciphering-cli-tool.md",
-  "main": "index.js",
+  "main": "my_ciphering_cli/index.js",
+  "type": "module",
   "author": "Anna Tolstova",
   "license": "ISC"
 }

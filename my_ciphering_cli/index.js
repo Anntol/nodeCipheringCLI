@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import { pipeline } from 'stream';
 
 import AtbashStream from './AtbashStream.js';

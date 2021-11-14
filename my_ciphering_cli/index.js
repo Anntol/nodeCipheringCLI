@@ -25,7 +25,17 @@ if ((!isFileAccessible(input)) || (!isFileAccessible(output))) {
 
 let streams = [];
 const ciphers = options.get('-c') ?? options.get('--config');
+if (!ciphers) {
+    console.error('Config option is required!');
+    process.exit(1);
+}
+
+const allowedCipherValues = ['C0','C1','R0','R1','A'];
 ciphers.split('-').forEach(cipher => {
+    if (!allowedCipherValues.includes(cipher)) {
+        console.error(`Invalid config value ${ cipher }!`);
+        process.exit(1);
+    }
     switch (cipher[0]) {
         case 'C':
             streams.push(new CaesarStream(cipher[1]));

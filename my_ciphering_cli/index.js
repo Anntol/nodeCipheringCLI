@@ -4,6 +4,7 @@ import { pipeline } from 'stream';
 import AtbashStream from './AtbashStream.js';
 import CaesarStream from './CaesarStream.js';
 import Rot8Stream from './Rot8Stream.js';
+import WritableStream from './WritableStream.js';
 import { isFileAccessible } from './isFileAccessible.js';
 
 const options = new Map();
@@ -44,7 +45,7 @@ ciphers.split('-').forEach(cipher => {
 pipeline(
     input ? fs.createReadStream(input) : process.stdin,
     ...streams,
-    output ? fs.createWriteStream(output, { flags: 'a' }) : process.stdout,
+    output ? new WritableStream(output) : process.stdout,
     (err) => {
       if (err) {
         console.error('Pipeline failed.', err);

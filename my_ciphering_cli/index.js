@@ -8,9 +8,14 @@ import { isFileAccessible } from './isFileAccessible.js';
 
 const options = new Map();
 for (let i = 2; i < process.argv.length; i += 2) {
-    options.set(process.argv[i], process.argv[i + 1]);
+    const key = process.argv[i];
+    if (options.has(key)) {
+        console.error('Option is duplicated!');
+        process.exit(1);
+    }
+    options.set(key, process.argv[i + 1]);
 }
-console.log(options);
+
 const input = options.get('-i');
 const output = options.get('-o');
 if ((!isFileAccessible(input)) || (!isFileAccessible(output))) {

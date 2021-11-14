@@ -4,6 +4,7 @@ import { pipeline } from 'stream';
 import AtbashStream from './AtbashStream.js';
 import CaesarStream from './CaesarStream.js';
 import Rot8Stream from './Rot8Stream.js';
+import { isFileAccessible } from './isFileAccessible.js';
 
 const options = new Map();
 for (let i = 2; i < process.argv.length; i += 2) {
@@ -12,6 +13,9 @@ for (let i = 2; i < process.argv.length; i += 2) {
 console.log(options);
 const input = options.get('-i');
 const output = options.get('-o');
+if ((!isFileAccessible(input)) || (!isFileAccessible(output))) {
+    process.exit(1);
+}
 
 let streams = [];
 const ciphers = options.get('-c');
@@ -28,7 +32,7 @@ ciphers.split('-').forEach(cipher => {
             break;
         default:
             console.error('Incorrect cipher mark!');
-            // TODO exit program
+            process.exit(1);
     }
 });
 

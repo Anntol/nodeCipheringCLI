@@ -5,5 +5,8 @@
   "main": "my_ciphering_cli/index.js",
   "type": "module",
   "author": "Anna Tolstova",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "27.3.1"
+  }
 }

@@ -6,7 +6,12 @@
   "type": "module",
   "author": "Anna Tolstova",
   "license": "ISC",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:cov": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+  },
   "devDependencies": {
+    "@types/jest": "27.0.3",
     "jest": "27.3.1"
   }
 }

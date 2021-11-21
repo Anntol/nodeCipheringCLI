@@ -29,3 +29,14 @@ $ node my_ciphering_cli --config "C1-R1-C0-C0-A-R0-R1-R1-A-C1" --input "./input.
 input.txt This is secret. Message about "_" symbol!
 
 output.txt This is secret. Message about "_" symbol!
+
+## Testing
+For running all jest test
+```
+npm run test
+```
+
+For checking tests coverage
+```
+npm run test:cov
+```

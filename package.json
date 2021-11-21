@@ -2,7 +2,16 @@
   "name": "nodecipheringcli",
   "version": "1.0.0",
   "description": "https://github.com/rolling-scopes-school/basic-nodejs-course/blob/master/descriptions/ciphering-cli-tool.md",
-  "main": "index.js",
+  "main": "my_ciphering_cli/index.js",
+  "type": "module",
   "author": "Anna Tolstova",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:cov": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+  },
+  "devDependencies": {
+    "@types/jest": "27.0.3",
+    "jest": "27.3.1"
+  }
 }

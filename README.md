@@ -14,3 +14,29 @@ CLI tool should accept 3 options (short alias and full name):
 3. -o, --output: a path to output file
 
 For example, config "C1-C1-R0-A" means "encode by Caesar cipher => encode by Caesar cipher => decode by ROT-8 => use Atbash"
+
+## Usage example:
+```
+$ node my_ciphering_cli -c "C1-C1-R0-A" -i "./input.txt" -o "./output.txt"
+```
+input.txt This is secret. Message about "_" symbol!
+
+output.txt Myxn xn nbdobm. Tbnnfzb ferlm "_" nhteru!
+
+```
+$ node my_ciphering_cli --config "C1-R1-C0-C0-A-R0-R1-R1-A-C1" --input "./input.txt" --output "./output.txt"
+```
+input.txt This is secret. Message about "_" symbol!
+
+output.txt This is secret. Message about "_" symbol!
+
+## Testing
+For running all jest test
+```
+npm run test
+```
+
+For checking tests coverage
+```
+npm run test:cov
+```

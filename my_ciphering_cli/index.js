@@ -6,17 +6,13 @@ import CustomError from './CustomError.js';
 import ReadableStream from './ReadableStream.js';
 import Rot8Stream from './Rot8Stream.js';
 import WritableStream from './WritableStream.js';
-import { checkFileAccessible } from './checkFileAccessible.js';
+
+import { checkConfigValidation } from './validation/checkConfigValidation.js';
+import { checkFileAccessible } from './validation/checkFileAccessible.js';
+import { getOptionsMap } from './validation/getOptionsMap.js';
 
 try {
-    const options = new Map();
-    for (let i = 2; i < process.argv.length; i += 2) {
-        const key = process.argv[i];
-        if (options.has(key)) {
-            throw new CustomError('Option is duplicated!');
-        }
-        options.set(key, process.argv[i + 1]);
-    }
+    const options = getOptionsMap(process.argv);
 
     const input = options.get('-i') ?? options.get('--input');
     checkFileAccessible(input);
@@ -26,15 +22,8 @@ try {
 
     let streams = [];
     const ciphers = options.get('-c') ?? options.get('--config');
-    if (!ciphers) {
-        throw new CustomError('Config option is required!');
-    }
-
-    const allowedCipherValues = ['C0','C1','R0','R1','A'];
+    checkConfigValidation(ciphers);
     ciphers.split('-').forEach(cipher => {
-        if (!allowedCipherValues.includes(cipher)) {
-            throw new CustomError(`Invalid config value ${ cipher }!`);
-        }
         switch (cipher[0]) {
             case 'C':
                 streams.push(new CaesarStream(cipher[1]));

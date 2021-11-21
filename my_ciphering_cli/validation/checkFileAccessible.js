@@ -1,6 +1,6 @@
 import * as path from 'path';
 import { accessSync } from 'fs';
-import CustomError from './CustomError.js';
+import CustomError from '../CustomError.js';
 
 export function checkFileAccessible(filePath) {
   if (filePath) {
